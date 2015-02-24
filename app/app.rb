@@ -2,7 +2,6 @@ class App
   class << self
     def call env
       begin
-        Log.info "\nStarting request"
         process env
       rescue Exception => e
         handle_error e
@@ -10,8 +9,6 @@ class App
     end
 
     def process env
-      Log.env_for env
-      
       request = Request.new( env )
       request.response.finish
     end
@@ -20,7 +17,7 @@ class App
       puts "Error processing request: #{ e.message }"
       puts e.backtrace[0..6]
 
-      Response.error.finish
+      Rack::Response.new( 'Error', 500 ).finish
     end
   end
 end

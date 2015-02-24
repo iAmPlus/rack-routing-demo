@@ -3,19 +3,17 @@ class Request
     @env = env
     @request = Rack::Request.new( env )
     @params  = params_for( env )
-
-    Log.info "@params: #{ @params }"
   end
 
 
   def params_for env
     case env[ 'REQUEST_METHOD' ].to_sym
       when :GET
-        Rack::Utils.parse_nested_query( env[ 'QUERY_STRING' ]).symbolize_keys
+        Rack::Utils.parse_nested_query( env[ 'QUERY_STRING' ])
       when :POST, :PUT
         body = @request.body.read.to_s
 
-        JSON.parse( body, symbolize_names:true )
+        JSON.parse( body )
     end
   end
 
@@ -23,9 +21,6 @@ class Request
   def response
     routing = Router.for( @env )
     @url_params = routing[ :params ]
-    
-    Log.info "routing to #{ routing[ :method ]}"
-    Log.info "with @url_params:#{ @url_params }"
     
     send routing[ :method ]
   end
@@ -35,8 +30,8 @@ class Request
     Rack::Response.new( 'Your request was GET /', 200 )
   end
 
-  def get_foo
-    Rack::Response.new( 'Your request was GET /foo', 200 )
+  def post_foo
+    Rack::Response.new( 'Your request was POST /foo', 200 )
   end
 
   def not_found
