@@ -10,7 +10,7 @@ This app shows how to use the [Rack Routing gem](https://github.com/iAmPlus/rack
 
 ### Examples:
 
-Request: `POST /foos, { bar:'baz' }`  
+Request: `POST /foos, { "bar":"baz" }`  
 Ruby:   
 
     def post_foos
