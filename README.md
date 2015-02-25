@@ -1,6 +1,6 @@
 ## Rack Routing Demo
 ----
-This app shows how to use the [Rack Routing gem](https://github.com/iAmPlus/rack-routing-demo).
+This app shows how to use the [Rack Routing gem](https://github.com/iAmPlus/rack-routing).
 
 ### Route http requests to Ruby methods:
 
