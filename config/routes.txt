@@ -1,2 +1,2 @@
 GET   /
-POST  /foo
+POST  /foos

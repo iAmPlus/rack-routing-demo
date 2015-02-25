@@ -30,11 +30,11 @@ class Request
     Rack::Response.new( 'Your request was GET /', 200 )
   end
 
-  def post_foo
-    Rack::Response.new( 'Your request was POST /foo', 200 )
+  def post_foos
+    Rack::Response.new( "Your request was POST /foos with body params #{ @params }", 200 )
   end
 
   def not_found
-    Rack::Response.new( '404: There is route for your request.', 404 )
+    Rack::Response.new( '404: There is no route for your request.', 404 )
   end
 end
