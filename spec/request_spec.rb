@@ -8,6 +8,13 @@ describe 'Requests' do
     expect( last_response.body   ).to eq 'Your request was GET /'
   end
 
+  specify 'GET /foos/123' do
+    get '/foos/123'
+
+    expect( last_response.status ).to eq  200
+    expect( last_response.body   ).to eq 'Your request was GET /foos with @url_params {:id=>"123"}'
+  end
+
   specify 'POST /foos' do
     post '/foos', { bar:'baz' }.to_json
 

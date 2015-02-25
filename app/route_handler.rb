@@ -9,6 +9,10 @@ class RouteHandler
     Rack::Response.new( 'Your request was GET /', 200 )
   end
 
+  def get_foos
+    Rack::Response.new( "Your request was GET /foos with @url_params #{ @url_params }", 200 )
+  end
+
   def post_foos
     Rack::Response.new( "Your request was POST /foos with body params #{ @params }", 200 )
   end
