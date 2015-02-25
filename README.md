@@ -22,3 +22,10 @@ Ruby:
     rackup
 
 This will start the server on port 9292.
+
+### To run specs:
+    rspec
+
+or
+
+    guard
