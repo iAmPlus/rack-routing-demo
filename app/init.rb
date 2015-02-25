@@ -6,6 +6,7 @@ require 'rack/routing'
 require_relative 'app'
 require_relative 'builder'
 require_relative 'request'
+require_relative 'route_handler'
 
 # Ruby modules
 require 'json'

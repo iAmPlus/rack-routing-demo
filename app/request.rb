@@ -5,7 +5,6 @@ class Request
     @params  = params_for( env )
   end
 
-
   def params_for env
     case env[ 'REQUEST_METHOD' ].to_sym
       when :GET
@@ -17,24 +16,11 @@ class Request
     end
   end
 
-
   def response
     routing = Router.for( @env )
     @url_params = routing[ :params ]
     
-    send routing[ :method ]
-  end
-
-
-  def get_root
-    Rack::Response.new( 'Your request was GET /', 200 )
-  end
-
-  def post_foos
-    Rack::Response.new( "Your request was POST /foos with body params #{ @params }", 200 )
-  end
-
-  def not_found
-    Rack::Response.new( '404: There is no route for your request.', 404 )
+    rh = RouteHandler.new( @env, @params, @url_params)
+    rh.send routing[ :method ]
   end
 end
