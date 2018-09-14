@@ -17,7 +17,7 @@ class Request
   end
 
   def response
-    routing = Router.for( @env )
+    routing = Rack::Routing::Router.for( @env )
     @url_params = routing[ :params ]
     
     rh = RouteHandler.new( @env, @params, @url_params)

@@ -14,4 +14,4 @@ require 'json'
 # I18n.enforce_available_locales = true
 
 ROUTES_FILE = 'config/routes.txt'
-ROUTES = Router.load_routes
+ROUTES = Rack::Routing::Router.load_routes
